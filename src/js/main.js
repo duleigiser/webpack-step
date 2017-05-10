@@ -2,7 +2,7 @@ import $ from 'jquery';
 import org from './mock.js'
 require("../css/style.css")
 require("../css/left.css")
-console.log(org)
+//console.log(org)
 function init(id,cb){
     // $.ajax({
     //     url:"",
@@ -22,7 +22,7 @@ init("#org",function(dom){
         console.log(this)
     })
 })
-
+console.log(1)
 function prapare(org) {
   var html = ["<ul class='left_nav'>"]
   $.each(org, function(index) {

@@ -58,3 +58,4 @@ typings/
 .env
 yarn.lock
 src/js/lib
+.DS_Store

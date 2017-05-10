@@ -29,13 +29,13 @@ rm('-rf', "./dist")
 var config = {
   //devtool: "source-map",
   entry: {
-    //vendor:['jquery'],
+    vendor:['jquery'],
     app: srcDir + "/js/main.js"
   },
   output: {
     path: path.join(__dirname, "dist/js/"),
     //publicPath: "dist/js/",
-    filename: "[name]-[chunkhash:6].js",
+    filename: "[name].[chunkhash:6].js",
     chunkFilename: "[chunkhash].js"
   },
   module: {
@@ -75,24 +75,20 @@ var config = {
     }),
     new ExtractTextPlugin("styles.css"),
     //将公共代码抽离出来合并为一个文件
-    new CommonsChunkPlugin('vendor'),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor', 'manifest'] // 指定公共 bundle 的名字。
+    }),
     new HtmlWebpackPlugin({
       title: 'My App',
       template: './src/index.html'
     }),
     new webpack.LoaderOptionsPlugin({
       options: {
-        postcss: require('./webpack-config/vendor/postcss.config.js'),
+        postcss: require('./postcss.config.js'),
         //eslint: require('./vendor/eslint.config.js'),
         //devServer: require('./vendor/devServer.config.js'),
       },
     })
-    //js文件的压缩
-    // new uglifyJsPlugin({
-    //     compress: {
-    //         warnings: false
-    //     }
-    // })
   ]
 }
 

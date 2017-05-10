@@ -4,7 +4,9 @@
   "description": "test",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --env=dev --progress --profile --colors",
+    "prod": "webpack --env=prod --progress --profile --colors"
   },
   "author": "dulei",
   "license": "ISC",
@@ -30,6 +32,7 @@
     "shelljs": "^0.6.0",
     "style-loader": "^0.17.0",
     "sugarss": "^1.0.0",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^2.4.5",
+    "webpack-merge": "^4.1.0"
   }
 }
