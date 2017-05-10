@@ -3,7 +3,9 @@
 ## 使用说明
 * npm install
 入口文件在 src/js
-  >webpack-dev-server
   开发用
-  >webpack -p 
+  >webpack-dev-server
+
   生产版本
+  >webpack -p 
+  
