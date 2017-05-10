@@ -1,0 +1,27 @@
+html,body {
+  height: 100%;
+  font-family: Microsoft YaHei
+}
+
+#org {
+  float:left;
+  height:100%
+}
+.left_nav{
+    height: 100%;
+    width: 120px;
+    background: #f8f9fb;
+}
+li.active {
+  display: flex;
+  color:#20a0ff;
+  background: #ecf0f4
+}
+.org_left{
+    height:40px;
+    line-height: 40px;
+    font-size:12px;
+    cursor: pointer;
+    background: #f8f9fb;
+    text-align: center;
+}
