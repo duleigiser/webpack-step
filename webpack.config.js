@@ -82,13 +82,11 @@ var config = {
       title: 'My App',
       template: './src/index.html'
     }),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        postcss: require('./postcss.config.js'),
-        //eslint: require('./vendor/eslint.config.js'),
-        //devServer: require('./vendor/devServer.config.js'),
-      },
-    })
+    // new webpack.LoaderOptionsPlugin({
+    //   options: {
+    //     postcss: require('./webpack-config/vendor/postcss.config.js'),
+    //   },
+    // })
   ]
 }
 
