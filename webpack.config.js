@@ -27,7 +27,8 @@ function getEntry() {
 }
 rm('-rf', "./dist")
 var config = {
-  //devtool: "source-map",
+  devtool: "source-map",
+ // sourceMap:true,
   entry: {
     vendor:['jquery'],
     app: srcDir + "/js/main.js"
@@ -52,16 +53,24 @@ var config = {
         loader: 'babel-loader'
       },
       {
-        test: /\.css$/,
+        test: /\.(css$|styl)$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [{
-              loader: 'css-loader',
+          use://"css-loader!postcss-loader!stylus-loader"
+           [
+             "css-loader",
+           {
+              loader:"postcss-loader",
+              options: {
+               sourceMap:true
+             }
+            },
+            {
+              loader:"stylus-loader",
               options: {
                 importLoaders: 1
               }
-            },
-            'postcss-loader'
+            }
           ]
         })
       }
@@ -87,7 +96,8 @@ var config = {
     //     postcss: require('./webpack-config/vendor/postcss.config.js'),
     //   },
     // })
-  ]
+  ],
+
 }
 
 module.exports = config

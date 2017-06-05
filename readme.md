@@ -7,5 +7,5 @@
   >webpack-dev-server
 
   生产版本
-  >webpack -p 
-  
+  >webpack -p
+

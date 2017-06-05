@@ -11,8 +11,9 @@
   "author": "dulei",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.16.1",
     "expose-loader": "^0.7.3",
-    "jquery": "^3.2.1",
+    "jquery": "^1.9.1",
     "webpack": "^2.5.0"
   },
   "devDependencies": {
@@ -31,6 +32,8 @@
     "precss": "^1.4.0",
     "shelljs": "^0.6.0",
     "style-loader": "^0.17.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
     "sugarss": "^1.0.0",
     "webpack-dev-server": "^2.4.5",
     "webpack-merge": "^4.1.0"

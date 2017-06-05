@@ -1,0 +1,21 @@
+/* 日历相关样式 start */
+#calenderBox{width:280px; height:300px; padding:10px; background:#fff;border: 1px solid #ccc;margin:50px auto; }
+#calenderBox .calenderTop{position:relative; height:50px;}
+#calenderBox .monthShow{display:block; width:160px; height:50px; overflow:hidden; margin:0 auto; font:bold 22px/50px "microsoft yahei"; color:#000; text-align:center;}
+#calenderBox .monthPrev,
+#calenderBox .monthNext,
+#calenderBox .yearPrev,
+#calenderBox .yearNext{position:absolute; top:15px; display:block; width:20px; height:21px; font:bold 20px/21px arial; text-decoration:none; color:#000;}
+#calenderBox .monthPrev{left:55px;}
+#calenderBox .monthNext{right:55px; text-align:right;}
+#calenderBox .yearPrev{left:20px; color:#aaa;}
+#calenderBox .yearNext{right:20px; text-align:right; color:#aaa;}
+
+#calenderBox .dateBox{width:260px; margin:5px auto;}
+#calenderBox .dateBox span{display:inline-block; width:33px; height:29px; font:normal 14px/29px arial; border:1px solid #ccc; margin:1px; color:#000; text-align:center; cursor:pointer;}
+#calenderBox .dateTitle span{width:35px; border:none; font-weight:bold;color: #06c}
+#calenderBox .dateCont span.noCont{width:35px; height:31px; border:none; cursor:default;}
+#calenderBox .dateBox span.nowDate{background:#06c; color:#fff;}
+#calenderBox .dateBox span.dateHover{background:#fff; color:#06c; border: 1px solid #06c}
+#calenderBox .dateBox span.dateCurr{background:#e1e1e1; color:#06c;}
+#calenderBox .dateBox span.dateActive{background:#ff0; color:#06c;}

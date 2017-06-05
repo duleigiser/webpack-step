@@ -59,3 +59,4 @@ typings/
 yarn.lock
 src/js/lib
 .DS_Store
+dist
