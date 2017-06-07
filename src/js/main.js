@@ -6,6 +6,7 @@ require("../css/left.css")
 require("../css/main.styl")
 require("../css/calender.css")
 import Calender from "./component/calender"
+import clock_conti from "./component/canvas-clock"
 if (!window.location.origin) {
 	window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
 }
@@ -219,3 +220,17 @@ function parsetime(dateStr){
     var nowDate = year + '-' + month + '-' + day;
     return nowDate
 }
+clockd1_={
+  "indicate": true,
+  "indicate_color": "#222",
+  "dial1_color": "#666600",
+  "dial2_color": "#81812e",
+  "dial3_color": "#9d9d5c",
+  "time_add": 1,
+  "time_24h": true,
+  "date_add":3,
+  "date_add_color": "#999",
+};
+var c = document.getElementById('clock1_');
+cns1_ = c.getContext('2d');
+clock_conti(200,cns1_,clockd1_);
