@@ -70,12 +70,12 @@ init("#org", function(dom) {
 //     xhrFields: {withCredentials: true}
 // })
 
-function ajax(_url,cb1){
+function ajax(_url,cb1,rq,orgid){
     $.ajax({
         url:_url,
         dataType:"json",
         success:function(data){
-            cb1(data)
+            cb1(data,rq,orgid)
         }
     })
 }
@@ -90,7 +90,7 @@ function getMain(orgid,rq){
     // var url_time = "http://localhost:3000/jsjd/time"
     ajax(url_interval,prapareInterval);
     ajax(url_header,parepareHeader)
-    ajax(url_time,prapareTime)
+    ajax(url_time,prapareTime,rq,orgid)
 }
 
 // axios("http://localhost:3000/jsjd/api").then(function(data) {
@@ -129,7 +129,8 @@ function prapareInterval(data) {
   for (var key in data) {
     if (key != "DCTYPE") htmla.push("<div class='item'>" + key + ":" + data[key] + "</div>")
   }
-  $("#mainrHeader").html(htmla.join(''))
+  var str = htmla[3]+htmla[2]+htmla[0]+htmla[1]
+  $("#mainrHeader").html(str)
 }
 
 function parepareHeader(data) {
@@ -146,40 +147,66 @@ function parepareHeader(data) {
   }
   $("#mainDataHeader").html(htmla.join(""));
 }
-
-function prapareTime(data) {
+function getsfm(){
+  var d = new Date();
+  var hours = d.getHours();
+  var min = d.getMinutes();
+  var sec = d.getSeconds();
+  
+  return hours+":"+min+":"+sec
+}
+function prapareTime(data,rq,orgid) {
   var htmla = [];
+  var index ='';
+  
+  $.ajax({
+    url:ctx+"/jsjd/pblh/getBcValue.do?org="+orgid+"&rq="+rq+" "+getsfm(),
+    async:false,
+    dataType:"json",
+    success:function(d){
+      index = d[0].ArrXb
+    }
+
+  })
   var now = getNowFormatDate()
+  if(rq) now = rq;
   for (var i = 0; i < data.length; i++) {
       htmla.push("<tr>")
       var d1 = getDateFromCurrentDate(now,i)
       htmla.push("<td>"+d1+"</td>")
-    for (var j = 0; j < data[i].length; j++) {
-      htmla.push("<td>" + transform(data[i][j]) + "</td>")
-    }
-     htmla.push("</tr>")
+      
+     
+      for (var j = 0; j < data[i].length; j++) {
+        if(d1 == getNowFormatDate().substr(5)&&j==index){
+           htmla.push("<td style='color:red'>" + transform(data[i][j]) + "</td>")
+        }else{
+          htmla.push("<td>" + transform(data[i][j]) + "</td>")
+        }
+        
+      }
+      htmla.push("</tr>")
   }
   $("#mainTime").html(htmla.join(''))
 }
 
 function transform(d) {
   switch (d) {
-    case 0:
+    case 1:
        d = "一值";
        break;
-     case 1:
+     case 2:
       d = "二值";
       break;
-    case 2:
+    case 3:
       d = "三值";
       break;
-    case 3:
+    case 4:
       d = "四值";
       break;
-    case 4:
+    case 5:
       d = "五值";
       break;
-    case 5:
+    case 6:
       d = "六值";
       break;
   }
@@ -214,8 +241,8 @@ function getNowFormatDate() {
 }
 function parsetime(dateStr){
      var year = parseInt(dateStr.slice(0, 4), 10),
-    month = parseInt(dateStr.slice(4, 6), 10),
-    day = parseInt(dateStr.slice(-2), 10);
+    month = dateStr.slice(4, 6),
+    day = dateStr.slice(-2);
     var nowDate = year + '-' + month + '-' + day;
     return nowDate
 }
