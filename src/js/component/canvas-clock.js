@@ -32,10 +32,12 @@
  * THE SOFTWARE.
  */
 
-day_arr = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
-month_arr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var day_arr = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
 
+var month_arr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 function clock_conti(size, cns, clockd) {
+
+  
   cns.clearRect(0, 0, size, size);
 
   cns.beginPath();
@@ -125,7 +127,7 @@ function clock_conti(size, cns, clockd) {
   cns.fill();
   cns.closePath();
 
-  clockd.timer = setTimeout(function() {
+  clockd.timer = setTimeout(function () {
     clock_conti(size, cns, clockd)
   }, 50);
 }
@@ -177,7 +179,7 @@ function clock_digital(size, cns, clockd) {
     date_add((size / 2), size / 5 * 3 + size / 10, size, cns, clockd);
   }
 
-  clockd.timer = setTimeout(function() {
+  clockd.timer = setTimeout(function () {
     clock_digital(size, cns, clockd)
   }, 50);
 }
@@ -272,7 +274,7 @@ function clock_reverse(size, cns, clockd) {
   cns.fill();
   cns.closePath();
 
-  clockd.timer = setTimeout(function() {
+  clockd.timer = setTimeout(function () {
     clock_reverse(size, cns, clockd)
   }, 50);
 }
@@ -372,7 +374,7 @@ function clock_norm(size, cns, clockd) {
   cns.fill();
   cns.closePath();
 
-  clockd.timer = setTimeout(function() {
+  clockd.timer = setTimeout(function () {
     clock_norm(size, cns, clockd)
   }, 50);
 }
@@ -459,7 +461,7 @@ function clock_follow(size, cns, clockd) {
     date_add((size / 2), size / 5 * 3 + size / 15, size, cns, clockd);
   }
 
-  clockd.timer = setTimeout(function() {
+  clockd.timer = setTimeout(function () {
     clock_follow(size, cns, clockd)
   }, 50);
 }
@@ -534,7 +536,7 @@ function clock_circles(size, cns, clockd) {
     date_add((size / 2), size / 6 * 3 + size / 10, size, cns, clockd);
   }
 
-  clockd.timer = setTimeout(function() {
+  clockd.timer = setTimeout(function () {
     clock_circles(size, cns, clockd)
   }, 50);
 }
@@ -613,7 +615,7 @@ function clock_grow(size, cns, clockd) {
   cns.fill();
   cns.closePath();
 
-  clockd.timer = setTimeout(function() {
+  clockd.timer = setTimeout(function () {
     clock_grow(size, cns, clockd)
   }, 50);
 }
@@ -702,7 +704,7 @@ function clock_dots(size, cns, clockd) {
     cns.closePath();
   }
 
-  clockd.timer = setTimeout(function() {
+  clockd.timer = setTimeout(function () {
     clock_dots(size, cns, clockd)
   }, 50);
 }
@@ -800,7 +802,7 @@ function clock_num(size, cns, clockd) {
   cns.fill();
   cns.closePath();
 
-  clockd.timer = setTimeout(function() {
+  clockd.timer = setTimeout(function () {
     clock_num(size, cns, clockd)
   }, 50);
 }
@@ -867,7 +869,7 @@ function clock_random(size, cns, clockd) {
     clockd["track"] = 0;
   }
 
-  clockd.timer = setTimeout(function() {
+  clockd.timer = setTimeout(function () {
     clock_random(size, cns, clockd)
   }, 50);
 }
@@ -941,7 +943,7 @@ function clock_digitalran(size, cns, clockd) {
     clockd["track"] = 0;
   }
 
-  clockd.timer = setTimeout(function() {
+  clockd.timer = setTimeout(function () {
     clock_digitalran(size, cns, clockd)
   }, 50);
 }
@@ -1046,7 +1048,7 @@ function clock_bars(size, cns, clockd) {
   cns.fill();
   cns.closePath();
 
-  clockd.timer = setTimeout(function() {
+  clockd.timer = setTimeout(function () {
     clock_bars(size, cns, clockd)
   }, 50);
 }
@@ -1173,7 +1175,7 @@ function clock_planets(size, cns, clockd) {
   cns.fill();
   cns.closePath();
 
-  clockd.timer = setTimeout(function() {
+  clockd.timer = setTimeout(function () {
     clock_planets(size, cns, clockd)
   }, 50);
 }
@@ -1370,7 +1372,7 @@ function clock_roulette(size, cns, clockd) {
     cns.closePath();
   }
 
-  clockd.timer = setTimeout(function() {
+  clockd.timer = setTimeout(function () {
     clock_roulette(size, cns, clockd)
   }, 50);
 }
@@ -1460,7 +1462,7 @@ function clock_binary(size, cns, clockd) {
     date_add((size / 2), size / 5 * 3 + size / 10, size, cns, clockd);
   }
 
-  clockd.timer = setTimeout(function() {
+  clockd.timer = setTimeout(function () {
     clock_binary(size, cns, clockd)
   }, 50);
 }
@@ -1471,7 +1473,7 @@ function clock_stop(clockd) {
 
 function clock_loadBG(src, clockd) {
   clockd.bgImage = new Image();
-  clockd.bgImage.onload = function() {
+  clockd.bgImage.onload = function () {
     clockd.bgLoaded = 1;
   };
   clockd.bgImage.src = src;
