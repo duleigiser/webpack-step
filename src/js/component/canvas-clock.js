@@ -37,14 +37,13 @@ var day_arr = ["周日", "周一", "周二", "周三", "周四", "周五", "周�
 var month_arr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 function clock_conti(size, cns, clockd) {
 
-  
   cns.clearRect(0, 0, size, size);
 
   cns.beginPath();
   if (clockd.hasOwnProperty("bg_color")) {
     cns.fillStyle = clockd["bg_color"];
   } else {
-    cns.fillStyle = "#ffffff";
+    cns.fillStyle = "#f3f3f3";
   }
   cns.rect(0, 0, size, size);
   cns.fill();
