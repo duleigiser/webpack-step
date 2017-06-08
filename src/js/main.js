@@ -247,9 +247,9 @@ function parsetime(dateStr){
     var nowDate = year + '-' + month + '-' + day;
     return nowDate
 }
-clockd1_={
+var clockd1_={
   "indicate": true,
-  "indicate_color": "#222",
+  "indicate_color": "#000",
   "dial1_color": "#666600",
   "dial2_color": "#81812e",
   "dial3_color": "#9d9d5c",
@@ -259,5 +259,5 @@ clockd1_={
   "date_add_color": "#999",
 };
 var c = document.getElementById('clock1_');
-cns1_ = c.getContext('2d');
-clock_conti(200,cns1_,clockd1_);
+var cns1_ = c.getContext('2d');
+clock_conti(300,cns1_,clockd1_);
