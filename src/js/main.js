@@ -30,22 +30,20 @@ function _getUserOrgId() {
     if(org_id == "a61365e2-969d-4352-b3f8-805027ab9f1d") org_id="c21834b4-1cb0-490f-a2a8-deeaf7f7e065"
     return org_id;
 }
-var org_id_in = _getUserOrgId();
-//默认电厂
-var nowDate = getNowFormatDate();
-getMain(org_id_in,nowDate)
+
+var org_id_in = _getUserOrgId()? _getUserOrgId():"c21834b4-1cb0-490f-a2a8-deeaf7f7e065"
+
 //初始化日历
 var myCalender = Calender();
 myCalender.init({
-    boxId: 'calenderBox',
-    clickFunction: showDate,
-    // 设置特殊日期
-    specialDate: [ {
-      "date": "2012,12,25",
-      "description": "圣诞节"
-    }],
-
-  });
+  boxId: 'calenderBox',
+  clickFunction: showDate,
+  // 设置特殊日期
+  specialDate: [ {
+    // "date": "2012,12,25",
+    //"description": "圣诞节"
+  }]
+});
 
  function showDate(date) {
     //date形如：20120901
@@ -59,10 +57,26 @@ myCalender.init({
 init("#org", function(dom) {
   dom.on("click", function() {
     $(this).addClass("active").siblings().removeClass("active");
-    var orgid = $(this).data("id")
+    var orgid = $(this).data("id");
+    var nowdata = getNowFormatDate();
+    var enddate = getDateFromCurrentDate(nowdata,15)
+   //console.log(enddate)
+    //console.log(nowdata)
+    var orghtml = $(this).html();
+    $("#title").html(orghtml+"排班表")
     var nowDate = getNowFormatDate();
-    getMain(orgid,nowDate)
+    getMain(orgid,nowDate);
+
   })
+  //console.log(dom)
+  for(var i = 0; i < dom.length;i++){
+   // console.log($(dom[i]).data("id"))
+    if(org_id_in === $(dom[i]).data("id")){
+      //alert(1)
+      $(dom[i]).click()
+    }
+  }
+  
 })
 
 //axios.defaults.withCredentials = true
@@ -176,7 +190,6 @@ function prapareTime(data,rq,orgid) {
       var d1 = getDateFromCurrentDate(now,i)
       htmla.push("<td>"+d1+"</td>")
       
-     
       for (var j = 0; j < data[i].length; j++) {
         if(d1 == getNowFormatDate().substr(5)&&j==index){
            htmla.push("<td style='color:red'>" + transform(data[i][j]) + "</td>")
@@ -227,16 +240,11 @@ function getNowFormatDate() {
     var month = date.getMonth() + 1;
     var strDate = date.getDate();
     var hour = date.getHours()
+    //4点往前减一天
+    if (hour<=4) strDate =strDate-1;
+    if (month >= 1 && month <= 9) month = "0" + month;
     
-    if(hour<=4){
-        strDate =strDate-1;
-    }
-    if (month >= 1 && month <= 9) {
-        month = "0" + month;
-    }
-    if (strDate >= 0 && strDate <= 9) {
-        strDate = "0" + strDate;
-    }
+    if (strDate >= 0 && strDate <= 9) strDate = "0" + strDate;
     var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate; 
     return currentdate;
 }
