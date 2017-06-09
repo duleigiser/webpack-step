@@ -17,5 +17,5 @@
 #calenderBox .dateCont span.noCont{width:35px; height:31px; border:none; cursor:default;}
 #calenderBox .dateBox span.nowDate{background:#06c; color:#fff;}
 #calenderBox .dateBox span.dateHover{background:#fff; color:#06c; border: 1px solid #06c}
-#calenderBox .dateBox span.dateCurr{background:#e1e1e1; color:#06c;}
+#calenderBox .dateBox span.dateCurr{background:#c1c1c1; color:#06c;}
 #calenderBox .dateBox span.dateActive{background:#ff0; color:#06c;}
