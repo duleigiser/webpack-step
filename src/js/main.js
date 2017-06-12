@@ -88,6 +88,7 @@ init("#org", function(dom) {
 function ajax(_url,cb1,rq,orgid){
     $.ajax({
         url:_url,
+        async:false,
         dataType:"json",
         success:function(data){
             cb1(data,rq,orgid)
@@ -140,12 +141,18 @@ function prapare(org) {
 }
 function prapareInterval(data) {
   var data = data[0];
-  var htmla = [];
-  for (var key in data) {
-    if (key != "DCTYPE") htmla.push("<div class='item'>" + key + ":" + data[key] + "</div>")
-  }
-  var str = htmla[3]+htmla[2]+htmla[0]+htmla[1]
-  $("#mainrHeader").html(str)
+  //var htmla = [];
+
+  // for (var key in data) {
+  //   if (key != "DCTYPE") htmla.push("<div class='item'>" + key + ":" + data[key] + "</div>")
+  // }
+  // if(htmla.length==3){
+  //   var str = htmla[0]+htmla[2]+htmla[1];
+  // }else{
+  //   var str = htmla[3]+htmla[2]+htmla[0]+htmla[1]
+
+  // }
+  $("#mainrHeader").html("<div class='item'>" + data.SchedulingInterval + "</div>")
 }
 
 function parepareHeader(data) {
