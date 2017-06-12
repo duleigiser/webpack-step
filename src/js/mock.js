@@ -9,6 +9,6 @@ var org =  [{
     id:"4961c78b-178d-423e-bec4-453fc11262cd"
 },{
     name:"京阳热电",
-    id:"4961c78b-178d-423e-bec4-453fc11262cd "
+    id:"076beb76-ba32-4547-b0f0-3cfd4ddf55bb"
 }]
 export default org
