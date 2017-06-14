@@ -213,7 +213,7 @@ function prapareTime(data,rq,orgid) {
 function transform(d) {
   switch (d) {
     case 0:
-      d = "-";
+      d = "无";
       break;
     case 1:
        d = "一值";
